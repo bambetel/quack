@@ -1,0 +1,31 @@
+:root {
+  --background: #f2f2f3;
+}
+
+/* which default? */
+[data-theme="dark"] {
+  --background: #3f3f3f;
+  --text-color: #fff;
+}
+
+body {
+  background: var(--background);
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto 0;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 0.62em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr {
+  color: rgba(0, 0, 0, 0.3);
+}

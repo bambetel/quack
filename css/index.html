@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="forms.css" />
+	<title>Test file for form styles</title>
+</head>
+
+<body>
+	<main>
+		<form action="" class="card">
+			<h3>Example form #1</h3>
+			<select name="" id="">
+				<option value="">Red</option>
+				<option value="">Green</option>
+				<option value="">Blue</option>
+				<option value="black" selected>Black</option>
+				<option value="cyan" disabled>Cyan</option>
+				<option value="" disabled>Magenta</option>
+			</select>
+			<small>Small tag is used for additional info in forms</small>
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam ex
+				totam exercitationem, voluptatibus laudantium atque commodi, minima
+				optio eum eius ducimus quis!
+			</p>
+
+			<details>
+				<summary>Details</summary>
+				<p>Something small enough to escape casual notice.</p>
+			</details>
+			<details>
+				<summary>Lorem ipsum</summary>
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
+					distinctio suscipit alias veritatis necessitatibus, saepe ut
+					dolores. Nisi hic cum suscipit dolorum. At ipsum minus veniam! Ad
+					recusandae optio sunt. Quaerat excepturi cumque illum. Dolore magni
+					modi quia qui earum animi consectetur facere officiis eaque, illo
+					ducimus perferendis numquam nihil enim, ipsa deserunt voluptatibus
+					expedita. Provident non numquam doloribus ratione.
+				</p>
+			</details>
+			<details>
+				<summary>The third item</summary>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+					quidem natus at!
+				</p>
+				<ul>
+					<li>item</li>
+					<li>second</li>
+					<li>third</li>
+				</ul>
+			</details>
+			<select name="" id="" multiple>
+				<option value="">Red</option>
+				<option value="">Green</option>
+				<option value="">Blue</option>
+				<option value="black" selected>Black</option>
+				<option value="cyan" disabled>Cyan</option>
+				<option value="" disabled>Magenta</option>
+			</select>
+		</form>
+		<form action="" class="card">
+			<select name="" multipleid="">
+				<option value="">Red</option>
+			</select>
+			<br />
+			<label> <input type="radio" name="color1" />Red </label>
+			<label> <input type="radio" name="color1" />Green </label>
+			<label> <input type="radio" name="color1" />Blue </label>
+			<input type="color" value="#c21486" />
+			<fieldset>
+				<legend>Color</legend>
+				<label> <input type="radio" name="color" />Red </label>
+				<label> <input type="radio" name="color" />Green </label>
+				<label> <input type="radio" name="color" />Blue </label>
+			</fieldset>
+			<fieldset>
+				<legend>I am a legend</legend>
+				<label for="gmo">Do you like GMO?</label>
+				<input type="text" placeholder="enter something" id="gmo"">
+          <select name="" id="">
+            <option value=" a">Option A</option>
+				<option value="b">Option B</option>
+				<option value="c">Option C</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<h4>Fieldset with no legend!</h4>
+				<input type="checkbox" id="nolegend" />
+				<label for="nolegend">No legend at all</label>
+
+				<p>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
+					impedit, officia repellat hic dolor minima ullam at. A laborum ad ex
+					laudantium, voluptatibus iure accusantium ipsa cum sed hic dolorum.
+					Officiis delectus officia corrupti nisi illum? Hic, provident
+					molestiae. Necessitatibus labore voluptate expedita placeat cumque
+					nihil, repellat facere perferendis, eveniet dignissimos maxime
+					pariatur officia voluptatem. Officia vitae nemo aspernatur
+					laudantium!
+				</p>
+				<hr />
+				<p>Tell me you are loving it</p>
+				<div class="flex-group"><button>Yes</button><button>No</button></div>
+			</fieldset>
+			<select name="cars" id="cars">
+				<optgroup label="Swedish Cars">
+					<option value="volvo">Volvo</option>
+					<option value="saab">Saab</option>
+				</optgroup>
+				<optgroup label="German Cars">
+					<option value="mercedes">Mercedes</option>
+					<option value="audi">Audi</option>
+				</optgroup>
+			</select>
+		</form>
+		<form action="" class="card">
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name" />
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" />
+			<input type="checkbox" id="remember" /><label for="remember">Remember me</label>
+			<br />
+			<input type="checkbox" aria-role="switch" id="other" />
+			<label for="other">Other switch</label>
+			<br />
+			<a href="">Reset password</a>
+			<input type="submit" value="Submit Button" />
+		</form>
+
+		<form action="" class="card">
+			<progress>test</progress>
+			<input type="range" min="0" max="100" value="43" />
+		</form>
+
+		<form action="" class="card">
+			<label for="title">Title</label>
+			<input type="text" name="title" id="title" />
+			<input type="text" disabled placeholder="disabled" />
+			<label for="id">Id</label>
+			<input type="text" value="123456" name="id" id="id" readonly />
+			<label for="summary">Summary</label>
+			<textarea name="summary" id="summary" cols="30" rows="10"></textarea>
+			<div class="flex-group">
+				<button class="primary">Tak</button>
+				<button>Nie</button>
+				<button disabled>Nie wiem</button>
+			</div>
+		</form>
+
+		<form action="" class="card">
+			<label for="title">Title</label>
+			<input type="text" id="title" name="title" placeholder="Invalid" aria-invalid="true" />
+			<label for="file">File</label>
+			<input type="file" id="file" name="file" />
+		</form>
+	</main>
+</body>
+
+</html>
