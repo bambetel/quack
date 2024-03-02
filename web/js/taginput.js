@@ -10,6 +10,7 @@ class TagInput extends HTMLElement {
 		const label = document.createElement("label");
 		const input = document.createElement("input");
 
+		shadow.append(templatetaginput.content.cloneNode(true))
 		label.innerText = "Item Tags:";
 		shadow.appendChild(label);
 		shadow.appendChild(this.tagList);

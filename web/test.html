@@ -10,12 +10,34 @@
 	<script lang="javascript" src="js/confirmedbutton.js"></script>
 	<script lang="javascript" src="js/taginput.js"></script>
 
-	<style>
-		.tag {
-			border: 2px solid gray;
-			box-shadow: 2px 2px 4px gray;
+	<template id="templatetaginput">
+		<style>
+			.tag {
+				margin: 5px;
+				padding: 4px;
+				border: 1px solid gray;
+				border-radius: 8px;
+				box-shadow: 2px 2px 4px gray;
+			}
+
+			.tag button {
+				border: none;
+				background: transparent;
+				box-shadow: none;
+			}
+
+			.tag button:hover {
+				background-color: red;
+			}
+		</style>
+	</template>
+
+	<script lang="javascript">
+		function getTags() {
+			let elem = document.querySelector("tag-input");
+			console.dir(elem.tags);
 		}
-	</style>
+	</script>
 </head>
 
 <body>
@@ -26,6 +48,7 @@
 	<button is="confirmed-button">Delete things</button>
 	<h2>Tag Input</h2>
 	<tag-input></tag-input>
+	<button onclick="getTags()">Get Tags</button>
 </body>
 
 </html>
