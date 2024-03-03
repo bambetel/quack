@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="css/style.css" rel="stylesheet">
+	<style>
+		.jumbolabel {
+			padding: 10px;
+			margin: 5px;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			border-radius: 12px;
+			box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.04);
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<p>{{.Title}}</p>
+		{{range .Items}}
+		<label class="jumbolabel"><input type="radio" name="{{$.Name}}" value="{{.Id}}">{{.Label}}{{if .Description}}
+			<small>{{.Description}}</small>{{end}}</label>
+		{{end}}
+	</section>
+</body>
+
+</html>
