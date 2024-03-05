@@ -5,11 +5,15 @@ import (
 	"io"
 	"net/http"
 	"os"
+
+	"gopkg.in/gographics/imagick.v3/imagick"
 )
 
 func main() {
 	fmt.Println("vim-go")
 	runServer()
+	imagick.Initialize()
+	defer imagick.Terminate()
 }
 
 func handleUploadFile(w http.ResponseWriter, r *http.Request) {
@@ -35,9 +39,21 @@ func handleUploadFile(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	attr := make(map[string]string)
 	attr["type"] = "any"
+
+	mw := imagick.NewMagickWand()
+	defer mw.Destroy()
+	mw.ReadImageFile(tempFile)
+	imageType := mw.GetImageFormat()
+	fmt.Printf("Magick said %s: (%d/%d), [%+v]", tempFile.Name(), mw.GetImageWidth(), mw.GetImageHeight(), imageType)
+
+	// cols, rows, err := mw.GetSize()
+	// if err != nil {
+	// 	fmt.Printf("Imagick error")
+	// 	return
+	// }
+	// fmt.Printf("Magick said (%d/%d)\n", cols, rows)
 
 	fmt.Fprintf(w, "Uploaded file \"%s\" (%d/%d bytes):\n%+v\n%+v\n", header.Filename, fileBytes, header.Size, header.Header, attr)
 }
