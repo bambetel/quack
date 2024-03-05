@@ -19,7 +19,7 @@ class ValidatedInput extends HTMLElement {
 			<input type="text" name="${this.name}" id="${this.id}" value="${this.value}" placeholder="${this.placeholder}">
 			<p><span class="input-feedback">Validation feedback</span></p>
 		</div>
-		`
+		`;
 
 		let input = shadow.querySelector("input#input-name");
 		let feedback = shadow.querySelector(".input-feedback");
@@ -27,13 +27,19 @@ class ValidatedInput extends HTMLElement {
 		input.addEventListener("change", (e) => {
 			console.log("You entered:", input.value);
 			feedback.innerHTML = `You entered: ${input.value}`;
+			this.value = input.value;
+			this.setAttribute("value", this.value)
 			e.preventDefault();
-		})
+		});
+
+		input.addEventListener("keypress", (e) => {
+			feedback.innerHTML = `You pressed: ${input.value} &lt;- ${e.key}`;
+		});
 
 	}
 
-	attributesChangeCallback(name, oldValue, newValue) {
-		console.log("Attribute ${name} change: ${oldValue} -> ${newValue}");
+	attributeChangedCallback(name, oldValue, newValue) {
+		console.log(`Attribute ${name} change: ${oldValue} -> ${newValue}`);
 	}
 }
 

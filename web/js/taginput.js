@@ -5,7 +5,14 @@ class TagInput extends HTMLElement {
 
 	constructor() {
 		super();
+	}
+	tagsUpdate = () => this.setAttribute("value", this.tags.join(","));
 
+	connectedCallback() {
+		// TODO WHY this doesn't remove component children?
+		// while (this.firstChild) {
+		// 	this.removeChild(this.lastChild);
+		// }
 		const shadow = this.attachShadow({ mode: "open" });
 		const label = document.createElement("label");
 		const input = document.createElement("input");
@@ -19,6 +26,13 @@ class TagInput extends HTMLElement {
 			let span = this.createTagNode(elem);
 			this.tagList.appendChild(span);
 		});
+
+		let resetInput = () => {
+			input.value = "";
+			this.tagsUpdate();
+			this.feedback.innerHTML = "";
+		}
+		resetInput();
 
 		input.addEventListener("keypress", (e) => {
 			// TODO all realatable events
@@ -35,6 +49,7 @@ class TagInput extends HTMLElement {
 					msg += "Tag should be at most 30 characters long. ";
 				}
 				if (!/^\w+$/.test(input.value)) {
+					// TODO might accept comma separated list of tags
 					msg += "Tag should consist only of letters, numbers and _. ";
 				}
 				if (msg != "") {
@@ -43,8 +58,7 @@ class TagInput extends HTMLElement {
 				}
 				this.tags.push(input.value);
 				this.tagList.appendChild(this.createTagNode(input.value));
-				input.value = "";
-				this.feedback.innerHTML = "";
+				resetInput()
 			} else {
 				this.feedback.innerHTML = "";
 			}
@@ -63,6 +77,7 @@ class TagInput extends HTMLElement {
 		btn.addEventListener("click", (e) => {
 			this.tags = this.tags.filter((a) => a != tag);
 			span.parentNode.removeChild(span);
+			this.tagsUpdate();
 		});
 		span.innerText = tag;
 		span.appendChild(btn);
