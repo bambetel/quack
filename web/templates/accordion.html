@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GO accordion component template</title>
+	<link href="css/style.css" rel="stylesheet">
+	<script src="/static/js/goaccordion.js" lang="javascript"></script>
+</head>
+
+<body>
+	<h2>{{.Title}}</h2>
+	<section is="go-accordion">
+		{{range .Items}}
+		<details>
+			<summary><strong>{{.Label}}</strong></summary>
+			<p>{{.Details}}</p>
+		</details>
+		{{end}}
+	</section>
+</body>
+
+</html>
