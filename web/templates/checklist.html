@@ -4,17 +4,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<link href="css/style.css" rel="stylesheet">
+	<title>GO checklist component test page</title>
+	<script src="static/js/gochecklist.js" lang="javascript"></script>
 </head>
 
 <body>
-	<fieldset>
-		<legend>{{.Title}}</legend>
-		{{range .Items}}
-		<div><label><input name="{{$.Name}}" type="checkbox" value="{{.Id}}">{{.Label}}</label></div>
-		{{end}}
-	</fieldset>
+	<section is="go-checklist" data-nummin="{{.NumMin}}" data-nummax="{{.NumMax}}">
+		<fieldset>
+			<legend>{{.Title}}</legend>
+			<small>Please select {{.NumMin}} to {{.NumMax}} items</small>
+			{{range .Items}}
+			<div><label><input name="{{$.Name}}" type="checkbox" value="{{.Id}}">{{.Label}}</label></div>
+			{{end}}
+		</fieldset>
+		<p class="q-feedback">Alles ok.</p>
+	</section>
 </body>
 
 </html>

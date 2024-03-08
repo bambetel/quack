@@ -46,8 +46,11 @@ func main() {
 			{"1", "Duck"},
 			{"2", "Goose"},
 			{"3", "Swan"},
+			{"4", "Ruddy shelduck"},
+			{"5", "Merganser"},
+			{"6", "Goosander"},
 		}
-		tmp.Execute(w, ChecklistData{"test", "Very Important Checklist", data})
+		tmp.Execute(w, ChecklistData{"test", "Very Important Checklist", 2, 2, data})
 	})
 	r.Get("/radio", func(w http.ResponseWriter, r *http.Request) {
 		tmp := template.Must(template.ParseFiles("web/templates/jumboradio.html"))
@@ -72,9 +75,10 @@ type AccordionItem struct {
 }
 
 type ChecklistData struct {
-	Name  string // HTML form name for the list
-	Title string // list title (fieldset legend)
-	Items []ChecklistItem
+	Name           string // HTML form name for the list
+	Title          string // list title (fieldset legend)
+	NumMin, NumMax int    // n selected, 0,0 - no constraints
+	Items          []ChecklistItem
 }
 
 type ChecklistItem struct {
