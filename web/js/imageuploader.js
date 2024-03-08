@@ -37,8 +37,18 @@ class ImageUploader extends HTMLElement {
 				const newFileItem = document.createElement("li");
 				const delBtn = document.createElement("button");
 				delBtn.addEventListener("click", () => {
-					// TODO server request
-					newFileItem.parentNode.removeChild(newFileItem);
+					try {
+						fetch("http://127.0.0.1:8080/upload/" + f.name, {
+							method: "DELETE"
+						}).then(resp => {
+							console.dir(resp);
+							if (resp.ok) {
+								newFileItem.parentNode.removeChild(newFileItem);
+							}
+						});
+					} catch (error) {
+						console.log("error sending delete request");
+					}
 				})
 				delBtn.innerHTML = "x";
 
