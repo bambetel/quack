@@ -20,18 +20,21 @@ class GoAccordion extends HTMLElement {
 		}
 
 		added.forEach((a) => {
+			// click event on details (not summary) not to complicate mutation callbacks
 			a.addEventListener("click", (e) => {
-				console.log("klik!");
-				this.toggleAll(e.target);
+				this.toggleOther(e);
 			});
 		});
 	}
 
-	toggleAll(item) {
-		const items = this.querySelectorAll("details");
+	toggleOther(e) {
+		if (!e.target.closest("summary") || e.currentTarget.tagName != "DETAILS") {
+			return
+		}
+		const items = this.querySelectorAll(":scope > details");
 		items.forEach((i) => {
-			if (i != item) {
-				i.removeAttribute("open");
+			if (i != e.currentTarget) {
+				i.removeAttribute("open")
 			}
 		});
 	}

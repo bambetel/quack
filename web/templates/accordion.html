@@ -7,18 +7,36 @@
 	<title>GO accordion component template</title>
 	<link href="css/style.css" rel="stylesheet">
 	<script src="/static/js/goaccordion.js" lang="javascript"></script>
+	<style>
+		[is="go-accordion"] summary {
+			border: 1px solid gray;
+			padding: 5px;
+			border-radius: 5px;
+			background-color: #ddd;
+			box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.08);
+			cursor: pointer;
+		}
+
+		[is="go-accordion"] summary:hover {
+			background-color: #eee;
+		}
+	</style>
 </head>
 
 <body>
 	<h2>{{.Title}}</h2>
-	<section is="go-accordion">
-		{{range .Items}}
-		<details>
-			<summary><strong>{{.Label}}</strong></summary>
-			<p>{{.Details}}</p>
-		</details>
-		{{end}}
-	</section>
+	{{template "accordion" .}}
 </body>
 
 </html>
+
+{{define "accordion"}}
+<section is="go-accordion">
+	{{range .Items}}
+	<details>
+		<summary><strong>{{.Label}}</strong></summary>
+		<p>{{.Details}}</p>
+	</details>
+	{{end}}
+</section>
+{{end}}
