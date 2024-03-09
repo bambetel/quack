@@ -16,7 +16,7 @@ class GoChecklist extends HTMLElement {
 		});
 
 		// TODO: just for checkboxes
-		// when are they accessible?
+		// when are they ready to use?
 		this.addEventListener("click", this.countChecked)
 
 		let parseRangeParam = (str) => {
@@ -26,7 +26,10 @@ class GoChecklist extends HTMLElement {
 		// TODO: check numMin <= numMax
 		this.numMin = parseRangeParam(this.getAttribute("data-nummin"));
 		this.numMax = parseRangeParam(this.getAttribute("data-nummax"));
-		console.log(`sel n range ${this.numMin}:${this.numMax}`);
+
+		if (this.numMin != NaN || this.numMax != NaN) {
+			this.setAttribute("data-validator", true)
+		}
 	}
 
 	onMutation(mutations) {

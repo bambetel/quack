@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test Form 1</title>
+	<link href="static/css/style.css" rel="stylesheet">
+	<link href="static/css/forms.css" rel="stylesheet">
+</head>
+
+<body>
+	<form method="POST">
+		<h2>Form title</h2>
+		{{if .}}<div class="qgo-feedback level-{{.Level}}"><strong>{{.Level}}</strong>: {{.Msg}}</div>{{end}}
+		<hr>
+		<p>Test form. Enter data: myname/mypass</p>
+		<label>Name <input type="text" name="name"></label>
+		<label>Password <input type="text" name="password"></label>
+		<hr>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+
+</html>

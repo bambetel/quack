@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test Form 3</title>
+	<link href="static/css/style.css" rel="stylesheet">
+	<link href="static/css/forms.css" rel="stylesheet">
+	<script src="static/js/gochecklist.js" lang="javascript"></script>
+
+	<script lang="javascript">
+		window.addEventListener("DOMContentLoaded", (e) => {
+			document.querySelector("form").addEventListener("submit", (e) => {
+				let list = document.querySelectorAll("[data-validator]");
+				let itemsOk = Array.from(list).map(a => a.getAttribute("data-valid") == "true")
+				let ok = itemsOk.reduce((a, b) => (a && b), true)
+				console.dir(itemsOk, ok, list);
+				if (!ok) {
+					console.log("Form contains errors")
+					e.preventDefault();
+				} else {
+					console.log("Submit form")
+				}
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<form method="POST" action="/form1">
+		<h2>Form 3</h2>
+		<hr>
+		<p>With JS on form can be submitted only if no validation errors.</p>
+		{{template "checklist" .}}
+		<hr>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+
+</html>

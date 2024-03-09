@@ -9,16 +9,21 @@
 </head>
 
 <body>
-	<section is="go-checklist" data-nummin="{{.NumMin}}" data-nummax="{{.NumMax}}">
-		<fieldset>
-			<legend>{{.Title}}</legend>
-			<small>Please select {{.NumMin}} to {{.NumMax}} items</small>
-			{{range .Items}}
-			<div><label><input name="{{$.Name}}" type="checkbox" value="{{.Id}}">{{.Label}}</label></div>
-			{{end}}
-		</fieldset>
-		<p class="q-feedback">Alles ok.</p>
-	</section>
+	<h2>Checklist GO component</h2>
+	{{template "checklist" .}}
 </body>
 
 </html>
+
+{{define "checklist"}}
+<section is="go-checklist" data-nummin="{{.NumMin}}" data-nummax="{{.NumMax}}">
+	<fieldset>
+		<legend>{{.Title}}</legend>
+		<small>Please select {{.NumMin}} to {{.NumMax}} items</small>
+		{{range .Items}}
+		<div><label><input name="{{$.Name}}" type="checkbox" value="{{.Id}}">{{.Label}}</label></div>
+		{{end}}
+	</fieldset>
+	<p class="q-feedback level-error"><!-- Not used when noscript --></p>
+</section>
+{{end}}
