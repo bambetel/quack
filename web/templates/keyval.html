@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test page for Key-Value input</title>
+	<link href="css/style.css" rel="stylesheet">
+	<script src="static/js/keyval.js"></script>
+</head>
+
+<body>
+	<template id="templatekvitem">
+		<div class="keyval-row">
+			<input type="text" name="key[]">→<input type="text" name="value[]"><button>x</button>
+		</div>
+	</template>
+
+	<section is="go-keyval"></section>
+</body>
+
+</html>

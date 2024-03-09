@@ -27,6 +27,11 @@ func main() {
 	// 	tmp.Execute(w, struct{ Title, Content string }{fmt.Sprintf("Title (%s)", id), "test"})
 	// })
 	r.Handle("/static/*", http.StripPrefix("/static/", fs))
+	r.Get("/ok", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Form was ok."))
+	})
+	r.Get("/form1", handleGetForm1)
+	r.Post("/form1", handlePostForm1)
 	r.Get("/accordion", func(w http.ResponseWriter, r *http.Request) {
 		tmp := template.Must(template.ParseFiles("web/templates/accordion.html"))
 		data := AccordionData{
@@ -61,7 +66,33 @@ func main() {
 		}
 		tmp.Execute(w, RadioListData{"test", "Your Favourite Waterfowl:", data})
 	})
+	r.Get("/keyval", func(w http.ResponseWriter, r *http.Request) {
+		tmp := template.Must(template.ParseFiles("web/templates/keyval.html"))
+		tmp.Execute(w, nil)
+	})
 	http.ListenAndServe(":3000", r)
+}
+
+func handleGetForm1(w http.ResponseWriter, r *http.Request) {
+	tmp := template.Must(template.ParseFiles("web/templates/form1.html"))
+	tmp.Execute(w, nil)
+}
+
+type FormFeedback struct {
+	Level, Msg string
+}
+
+func handlePostForm1(w http.ResponseWriter, r *http.Request) {
+	tmp := template.Must(template.ParseFiles("web/templates/form1.html"))
+	feedback := FormFeedback{"OK", "Alles ok."}
+	name, password := r.FormValue("name"), r.FormValue("password")
+	if name != "myname" || password != "mypass" {
+		feedback = FormFeedback{"ERROR", "Form error: no backend."}
+		tmp.Execute(w, feedback)
+	} else {
+		fmt.Println("redirect ok")
+		http.Redirect(w, r, "ok", http.StatusSeeOther)
+	}
 }
 
 type AccordionData struct {
