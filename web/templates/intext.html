@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text input template test</title>
+	<script src="static/js/vi.js"></script>
+	<style>
+		.input-row {
+			width: 700px;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 5px;
+			padding: 5px;
+			margin: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<h3>Form title</h3>
+		<hr>
+		{{range .TextInputs}}
+		{{template "textinputrow" .}}
+		{{end}}
+		<br>
+		<input type="submit">
+	</form>
+</body>
+
+</html>
+
+{{define "textinputrow"}}
+<div class="input-row">
+	<label for="{{.Id}}">{{.Label}}</label><input type="text" is="validated-input" name="{{.Name}}" id="{{.Id}}"><span
+		class="input-feedback" id="{{.Id}}-feedback">Feedback</span>
+</div>
+{{end}}

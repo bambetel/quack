@@ -30,6 +30,7 @@ func main() {
 	r.Get("/ok", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Form was ok."))
 	})
+	r.Get("/form3", handleGetForm3)
 	r.Get("/form1", handleGetForm1)
 	r.Post("/form1", handlePostForm1)
 	r.Get("/accordion", func(w http.ResponseWriter, r *http.Request) {
@@ -47,15 +48,7 @@ func main() {
 	})
 	r.Get("/check", func(w http.ResponseWriter, r *http.Request) {
 		tmp := template.Must(template.ParseFiles("web/templates/checklist.html"))
-		data := []ChecklistItem{
-			{"1", "Duck"},
-			{"2", "Goose"},
-			{"3", "Swan"},
-			{"4", "Ruddy shelduck"},
-			{"5", "Merganser"},
-			{"6", "Goosander"},
-		}
-		tmp.Execute(w, ChecklistData{"test", "Very Important Checklist", 2, 2, data})
+		tmp.Execute(w, cdata)
 	})
 	r.Get("/radio", func(w http.ResponseWriter, r *http.Request) {
 		tmp := template.Must(template.ParseFiles("web/templates/jumboradio.html"))
@@ -70,7 +63,32 @@ func main() {
 		tmp := template.Must(template.ParseFiles("web/templates/keyval.html"))
 		tmp.Execute(w, nil)
 	})
+	r.Get("/text", func(w http.ResponseWriter, r *http.Request) {
+		inputs := []TextInputData{
+			{"inname", "name", "Name", "Enter your name", 0, 10},
+			{"inpassword", "password", "password", "Enter your password", 0, 10},
+			{"inaddress", "address", "address", "Enter your address", 0, 10},
+			{"intelephone", "telephone", "telephone", "Enter your telephone", 0, 10},
+		}
+		tmp := template.Must(template.ParseFiles("web/templates/intext.html"))
+		tmp.Execute(w, struct{ TextInputs []TextInputData }{inputs})
+	})
 	http.ListenAndServe(":3000", r)
+}
+
+var data = []ChecklistItem{
+	{"1", "Duck"},
+	{"2", "Goose"},
+	{"3", "Swan"},
+	{"4", "Ruddy shelduck"},
+	{"5", "Merganser"},
+	{"6", "Goosander"},
+}
+var cdata = ChecklistData{"test", "Very Important Checklist", 2, 2, data}
+
+func handleGetForm3(w http.ResponseWriter, r *http.Request) {
+	tmp := template.Must(template.ParseFiles("web/templates/form3.html", "web/templates/checklist.html"))
+	tmp.Execute(w, cdata)
 }
 
 func handleGetForm1(w http.ResponseWriter, r *http.Request) {
