@@ -1,0 +1,21 @@
+{{define "input" -}}
+{{$type:=.Type}}
+{{$name:=.Name}}
+{{$label:=.Label}}
+{{$id:=.Id}}
+
+{{.}}
+{{if .Name}}<!-- TODO: check type and name provided -->
+<div>
+	{{if $label}}
+	<label class="input-label" for="{{$id}}">
+		<span class="label-text">{{$label}}</span>
+	</label>
+	{{end}}
+	<input class="" {{if $id }}id="{{$id}}" {{end}} type="{{.Type}}" name="{{.Name}}" {{if .Value}}value="{{.Value}}"
+		{{end}}>
+</div>
+{{else}}
+<p>Lacking required fields (and/or): type, name</p>
+{{end}}
+{{end}}

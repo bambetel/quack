@@ -31,6 +31,16 @@ func main() {
 		w.Write([]byte("Form was ok."))
 	})
 	r.Get("/form3", handleGetForm3)
+	r.Get("/input", func(w http.ResponseWriter, r *http.Request) {
+		tmp := template.Must(template.New("input.html").Funcs(template.FuncMap{"WithAttributes": TmplWithAttributes}).ParseFiles("web/templates/input.html", "web/templates/part_input.html"))
+		// input := struct {
+		// 	Name  string
+		// 	Type  string
+		// 	Label string
+		// 	Id    string
+		// }{"name", "text", "label", "myid"}
+		tmp.Execute(w, nil)
+	})
 	r.Get("/form1", handleGetForm1)
 	r.Post("/form1", handlePostForm1)
 	r.Get("/accordion", func(w http.ResponseWriter, r *http.Request) {
