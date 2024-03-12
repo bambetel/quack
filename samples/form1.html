@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="index.css" rel="stylesheet">
+	<link href="forms.css" rel="stylesheet">
+	<style>
+		.card {
+			max-width: 600px;
+		}
+
+		.col-6 {
+			width: 50%;
+		}
+
+		.col-4 {
+			width: 33%;
+		}
+
+		.col-3 {
+			width: 25%;
+		}
+
+		.col-3,
+		.col-4,
+		.col-6:not(:last-of-type) {
+			margin-right: 1rem;
+		}
+
+		.row {
+			display: flex;
+		}
+	</style>
+</head>
+
+<body>
+
+	<form action class="card">
+		<h3>Dane dostawy</h3>
+		<hr>
+		<div class="row">
+			<div class="col-6"><label for="firstname">Imię</label><input type="text" id="firstname" name="firstname">
+			</div>
+			<div class="col-6"><label for="lastname">Nazwisko</label><input type="text" id="lastname" name="lastname">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label for="street">Ulica</label><input type="text" name="street" id="street">
+			</div>
+			<div class="col-3">
+				<label for="house">Nr domu</label><input type="text" name="house" id="house">
+			</div>
+			<div class="col-3">
+				<label for="apt">Nr mieszkania</label><input type="text" name="apt" id="apt">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6"><label for="postcode">Kod pocztowy</label><input type="text" id="postcode"
+					name="postcode">
+			</div>
+			<div class="col-6"><label for="city">Miasto</label><input type="text" id="city" name="city">
+			</div>
+		</div>
+		<div class="row">
+
+			<select name="cars" id="cars">
+				<optgroup label="Polska A">
+					<option value="P">Wielkopolskie</option>
+					<option value="D">Dolnośląskie</option>
+				</optgroup>
+				<optgroup label="Polska B">
+					<option value="B">Podlaskie</option>
+					<option value="N">Warmińsko-Mazurskie</option>
+				</optgroup>
+			</select>
+		</div>
+		<hr>
+		<input type="submit" value="Zapisz" />
+	</form>
+</body>
+
+</html>
