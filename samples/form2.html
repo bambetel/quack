@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="forms.css" />
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <form class="card">
+      <h3>Form title</h3>
+      <p class="form-feedback info error">Server-generated feedback</p>
+      <p class="form-feedback info success">Server-generated feedback</p>
+      <p class="form-feedback info info">Server-generated feedback</p>
+      <p class="form-feedback info warning">Server-generated feedback</p>
+      <div class="row">
+        <div class="control">
+          <label
+            ><span class="label-text">Name</span><input type="text" name="name"
+          /></label>
+          <div class="control-feedback">Invalid name!</div>
+        </div>
+        <div class="control">
+          <label
+            ><span class="label-text">Email</span
+            ><input type="email" name="email"
+          /></label>
+        </div>
+      </div>
+      <div class="row grid-row">
+        <div class="control col-6">
+          <label
+            ><span class="label-text">Name</span><small class="input-hint">Please enter your name (5-10 characters).</small></span><input type="text" name="name"
+          /></label>
+          <div class="control-feedback">Invalid name!</div>
+        </div>
+        <div class="control col-6">
+          <label
+            ><span class="label-text">Email</span
+            ><small class="input-hint">We will send SPAM to the provided address.</small><input type="email" name="email"
+          /></label>
+        </div>
+      </div>
+      <div class="row grid-row">
+        <div class="control col-8">
+          <label
+            ><span class="label-text">Street</span
+            ><input type="text" name="name"
+          /></label>
+          <div class="control-feedback"></div>
+        </div>
+        <div class="control col-2">
+          <label
+            ><span class="label-text">House</span
+            ><input type="email" name="email"
+          /></label>
+        </div>
+        <div class="control col-2">
+          <label
+            ><span class="label-text">Apt</span
+            ><input type="email" name="email"
+          /></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="control">
+          <label for="mycheck"
+            ><input type="checkbox" name="" id="mycheck" /><span
+              class="label-text"
+              >Do you agree to proceed?</span
+            ></label
+          >
+          <div class="control-feedback">Please check YES</div>
+        </div>
+      </div>
+      <hr />
+      <input type="submit" value="Remove" class="destructive" />
+      <input type="submit" value="Save" disabled />
+      <div class="control-feedback inline">
+        Please correct errors in the highlighted fields before submitting the
+        form. The submit button is disabled and will be enabled again by JS.
+      </div>
+    </form>
+  </body>
+</html>

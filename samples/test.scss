@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "sass:color";
+
+.control-feedback {
+  font-size: 80%;
+  color: brown;
+}
+
+.info {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+$info-levels: (
+  "info": rgb(104, 149, 201),
+  "success": rgb(61, 146, 99),
+  "warning": rgb(228, 127, 33),
+  "error": rgb(180, 82, 104)
+);
+
+@each $name, $color in $info-levels {
+  .#{$name} {
+    color: color.adjust($color, $lightness: -30%);
+    border-color: color.adjust($color, $lightness: -40%);
+    background-color: color.adjust($color, $saturation: -10%, $lightness: +30%);
+  }
+}
+// .error {
+//   color: rgb(109, 27, 27);
+//   border-color: rgb(201, 95, 95);
+//   background-color: rgb(238, 180, 180);
+// }
+
+.destructive {
+  background-color: rgb(201, 95, 95);
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+.inline {
+  display: inline-block;
+}

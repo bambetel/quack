@@ -1,0 +1,100 @@
+.control-feedback {
+  font-size: 80%;
+  color: brown;
+}
+
+.info {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+.info {
+  color: #284970;
+  border-color: #1b314a;
+  background-color: #dbe4ef;
+}
+
+.success {
+  color: #10261a;
+  border-color: #010201;
+  background-color: #9dcbb2;
+}
+
+.warning {
+  color: #60340c;
+  border-color: #331c06;
+  background-color: #f0ceae;
+}
+
+.error {
+  color: #4c212b;
+  border-color: #281217;
+  background-color: #dec1c8;
+}
+
+.destructive {
+  background-color: rgb(201, 95, 95);
+}
+
+.row,
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+
+.col-1 {
+  grid-column: span 1;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}
+
+.col-4 {
+  grid-column: span 4;
+}
+
+.col-5 {
+  grid-column: span 5;
+}
+
+.col-6 {
+  grid-column: span 6;
+}
+
+.col-7 {
+  grid-column: span 7;
+}
+
+.col-8 {
+  grid-column: span 8;
+}
+
+.col-9 {
+  grid-column: span 9;
+}
+
+.col-10 {
+  grid-column: span 10;
+}
+
+.col-11 {
+  grid-column: span 11;
+}
+
+.col-12 {
+  grid-column: span 12;
+}
+
+.inline {
+  display: inline-block;
+} /*# sourceMappingURL=test.css.map */
