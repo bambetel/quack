@@ -7,6 +7,7 @@
 	<title>Test Form 1</title>
 	<link href="static/css/style.css" rel="stylesheet">
 	<link href="static/css/forms.css" rel="stylesheet">
+	<script src="static/js/vi.js" lang="javascript"></script>
 </head>
 
 <body>
@@ -20,6 +21,13 @@
 		"Type" "text"
 		"Id" "myid"
 		"Value" "myvalue"
+		}}
+		{{template "input" WithAttributes
+		"Name" "password"
+		"Label" "Enter password"
+		"Type" "text"
+		"Id" "password"
+		"Value" ""
 		}}
 		<hr>
 		<input type="submit" value="Submit">

@@ -12,8 +12,10 @@
 		<span class="label-text">{{$label}}</span>
 	</label>
 	{{end}}
-	<input class="" {{if $id }}id="{{$id}}" {{end}} type="{{.Type}}" name="{{.Name}}" {{if .Value}}value="{{.Value}}"
-		{{end}}>
+	<input is="validated-input" class="" data-minlen="4" data-maxlen="12" {{if $id }}id="{{$id}}" {{end}}
+		type="{{.Type}}" name="{{.Name}}" {{if .Value}}value="{{.Value}}" {{end}}>
+	<br>
+	<p class="input-feedback" id="{{$id}}-feedback"></p>
 </div>
 {{else}}
 <p>Lacking required fields (and/or): type, name</p>
