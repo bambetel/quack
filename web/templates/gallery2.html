@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="static/js/imagebox.js" lang="javascript"></script>
+	<style>
+		.imagegrid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		}
+
+		.imagethumb {
+			max-width: 300px;
+			max-height: 300px;
+			aspect-ratio: 1;
+		}
+
+		/* TODO: cover fit image */
+		.imagethumb img {
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="imagegrid" is="image-box">
+		{{range .}}
+		<div class="imagethumb">
+			<img src="" data-src="{{.Src}}" data-ready="false" style="background-image: url({{.Thumb}});">
+			<p>{{.Label}}</p>
+		</div>
+		{{end}}
+	</div>
+</body>
+
+</html>

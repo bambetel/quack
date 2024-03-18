@@ -100,6 +100,23 @@ func main() {
 		tmp := template.Must(template.ParseFiles("web/templates/gallery.html"))
 		tmp.Execute(w, data)
 	})
+	r.Get("/gallery2", func(w http.ResponseWriter, r *http.Request) {
+		type img struct {
+			Src   string
+			Thumb string
+			Label string
+		}
+		const imgCount = 20
+		data := make([]img, imgCount)
+		for i := range data {
+			data[i].Src = fmt.Sprintf("https://picsum.photos/%d/400", 300+i)
+			data[i].Thumb = fmt.Sprintf("https://picsum.photos/%d/20", 20+i)
+			data[i].Label = fmt.Sprintf("Image %d", i)
+		}
+
+		tmp := template.Must(template.ParseFiles("web/templates/gallery2.html"))
+		tmp.Execute(w, data)
+	})
 	http.ListenAndServe(":3000", r)
 }
 
